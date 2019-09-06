@@ -1,0 +1,19 @@
+FROM driftingpig/obiwan_dr8:step2
+
+ADD . /src
+
+#RUN cd /src && cd openmpi-1.10.7 && ./configure && make && make install 
+
+#RUN mpirun
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
+ENV LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/
+RUN cd /src && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py
+#RUN cd / && pip install mpi4py
+#RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/ && cd /src/mpi4py-3.0.2/ && python setup.py build && python setup.py install
+#RUN curl -O https://bitbucket.org/mpi4py/mpi4py/downloads/mpi4py-X.Y.tar.gz && tar -zxf mpi4py-X.Y.tar.gz && cd mpi4py-X.Y && python setup.py build 
+
+RUN pip install h5py 
+
+#RUN pip install galsim 
+
+RUN pip install pandas
